@@ -8,7 +8,7 @@ First create your config file at `src/main/resources/config.properties`, set `ca
 Then:
 
 ```shell
-# Build image to tarball (or download it from the GitHub release)
+# Build image to tarball
 ./gradlew jibBuildTar
 
 # Copy tarball to the remote machine, then load it
