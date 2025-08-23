@@ -8,15 +8,14 @@ First create your config file at `src/main/resources/config.properties`, set `ca
 Then:
 
 ```shell
-# SSH to the machine where your Docker registry is
-ssh user@machine -L5000:localhost:5000
+# Build image to tarball (or download it from the GitHub release)
+./gradlew jibBuildTar
 
-# Build and deploy
-./gradlew jib
+# Copy tarball to the remote machine, then load it
+docker load --input ms-calendar-tz-fix.tar
 
 # Start it on the remote machine
-docker run -p 8080:8080 -d --restart=always \
-  --name ms-calendar-tz-fix localhost:5000/ms-calendar-tz-fix:1.0.0
+docker run -p 8080:8080 -d --restart=always --name ms-calendar-tz-fix abelk/ms-calendar-tz-fix:1.0.0
 ```
 
 After this, you can set Google Calendar to use the new calendar URL (wherever you're hosting it).
