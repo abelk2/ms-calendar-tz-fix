@@ -34,7 +34,7 @@ jib {
         }
     }
     to {
-        image = "localhost:5000/ms-calendar-tz-fix:${project.version}"
+        image = "abelk/ms-calendar-tz-fix:${project.version}"
     }
     container {
         mainClass = "eu.abelk.tzfix.MainKt"
