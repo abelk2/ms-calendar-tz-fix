@@ -23,12 +23,14 @@ dependencies {
     implementation("org.slf4j:slf4j-simple:2.0.17")
 }
 
+val jibArchitecture = providers.gradleProperty("jibArchitecture").orElse("amd64")
+
 jib {
     from {
         image = "eclipse-temurin:17.0.15_6-jre-jammy"
         platforms {
             platform {
-                architecture = "arm"
+                architecture = jibArchitecture.get()
                 os = "linux"
             }
         }
